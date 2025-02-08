@@ -1,0 +1,27 @@
+# CRON CONFIGURATION FOR WEATHER FORECAST EMAIL (LIMITED TO 14 DAYS)
+
+# Purpose:
+# This cron job runs the WeatherApp script daily at 8:00 AM for 14 days to fetch the 3-day weather forecast 
+# for Berlin and sends an email with the weather data and GPT recommendations.
+
+# Crontab Entry:
+# 0 8 * * * /usr/bin/python3 /home/ubuntu/WeatherApp/main.py >> /home/ubuntu/WeatherApp/cron.log 2>&1
+
+# Explanation:
+# - "0 8 * * *": Schedule the job to run daily at 8:00 AM.
+# - "/usr/bin/python3": Specifies the Python interpreter to execute the script.
+# - "/home/ubuntu/WeatherApp/main.py": Full path to the main script of the WeatherApp.
+# - ">> /home/ubuntu/WeatherApp/cron.log 2>&1": Logs output and errors to a file for monitoring.
+
+# Additional Step:
+# - A separate script ("disable_cron.sh") is scheduled to disable the cron job 14 days from the start.
+# - You might want to install "at"
+# - echo "/home/ubuntu/WeatherApp/disable_cron.sh" | at 08:01 AM 2025-02-23
+
+# To manually stop the job before 14 days:
+# 1. Run "crontab -e" and remove the line with "/home/ubuntu/WeatherApp/main.py".
+# 2. Verify using "crontab -l".
+
+# Logs:
+# - WeatherApp logs: "/home/ubuntu/WeatherApp/cron.log"
+# - Cron removal logs: "/home/ubuntu/WeatherApp/cron_removal.log"
