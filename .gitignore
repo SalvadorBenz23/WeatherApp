@@ -1,0 +1,42 @@
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.cache
+
+# Ignore virtual environment directories
+venv/
+.env/
+.venv/
+
+# Ignore logs and local configuration
+logs/
+*.log
+*.out
+*.err
+*.pid
+*.lock
+
+# Ignore environment files (for security reasons)
+.env
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Ignore compiled C extensions
+*.so
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+*.iml
+*.sublime-project
+*.sublime-workspace
+
+# Ignore package and dependency management files
+pip-log.txt
+pip-delete-this-directory.txt
