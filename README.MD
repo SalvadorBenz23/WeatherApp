@@ -48,15 +48,15 @@ pip install -r requirements.txt
 ```
 
 ### 3️⃣ Configure Environment Variables
-Edit `config.py` to include your API keys and email settings:
-```python
-OPENWEATHER_API_KEY = "your_openweathermap_api_key"
-OPENAI_API_KEY = "your_openai_api_key"
-SENDER_EMAIL = "your_email@example.com"
-RECEIVER_EMAIL = "recipient_email@example.com"
-AWS_SES_USER = "your_ses_user"
-AWS_SES_PASS = "your_ses_password"
-SMTP_SERVER = "email-smtp.eu-west-3.amazonaws.com"
+To set up your environment variables, run the following commands:
+```bash
+export OPENWEATHER_API_KEY="your_openweathermap_api_key"
+export OPENAI_API_KEY="your_openai_api_key"
+export SENDER_EMAIL="your_email@example.com"
+export RECEIVER_EMAIL="recipient_email@example.com"
+export AWS_SES_USER="your_ses_user"
+export AWS_SES_PASS="your_ses_password"
+export SMTP_SERVER="email-smtp.eu-west-3.amazonaws.com"
 ```
 
 ### 4️⃣ Set Up Cron Jobs
