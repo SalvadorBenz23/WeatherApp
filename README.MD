@@ -1,7 +1,7 @@
 # WeatherApp
 
 ## 🌍 Overview
-**WeatherApp** is a Python-based application that **fetches a 3-day weather forecast** for Berlin and **sends it via email** every day at **8:00 AM**. It includes an **AI-powered recommendation** for after-work activities based on the weather forecast.
+**WeatherApp** is a Python-based application that **fetches a 3-day weather forecast** for Berlin and **sends it via email**  using **AW SES** every day at **8:00 AM**. It includes an **AI-powered recommendation** for after-work activities based on the weather forecast.
 
 ---
 
@@ -11,6 +11,13 @@
 ✅ Sends **formatted weather reports** as an **HTML email**  
 ✅ Runs **automatically via cron** every morning at **8:00 AM**  
 ✅ **Disables itself after 14 days** to avoid infinite scheduling  
+
+---
+
+## 📧 Sample Email
+Below is an example of the email sent by the WeatherApp:
+
+![Sample Email](img/image.png)
 
 ---
 

@@ -1,63 +1,75 @@
 from utils import get_weather_icon
 
 def format_forecast_email(forecast, gpt_recommender):
-    """Format the forecast and recommendations into an HTML email."""
+    """Format the forecast email with improved reliability and simplicity."""
     email_content = f"""
     <html>
-        <head>
-            <style>
-                table {{
-                    width: 100%;
-                    border-collapse: collapse;
-                }}
-                th, td {{
-                    border: 1px solid #ddd;
-                    padding: 8px;
-                    text-align: left;
-                }}
-                th {{
-                    background-color: #f2f2f2;
-                }}
-            </style>
-        </head>
         <body>
-            <h1>🌤️ 3-Day Weather Forecast for Berlin 🌤️</h1>
-            <p><b>Hi Lisa,</b></p>
-            <p>Here’s your personalized weather update for the next three days in Berlin! 🌤️ Use this to plan your day and after-work activities.</p>
+            <table style="width: 100%; border: none; margin-bottom: 20px;">
+                <tr>
+                    <td align="center">
+                        <h1 style="margin: 0;">🌤️ 3-Day Weather Forecast for Berlin 🌤️</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p style="margin: 10px 0; font-family: Arial, sans-serif; font-size: 14px;">
+                            <b>Hello Lisa,</b><br>
+                            Here’s your daily weather update for the next three days in Berlin! Plan your day with the forecast and check out our GPT-powered recommendations below.
+                        </p>
+                    </td>
+                </tr>
+            </table>
     """
+
     for date, entries in forecast.items():
         email_content += f"""
-            <h2>📅 {date}</h2>
-            <table>
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-family: Arial, sans-serif; font-size: 14px;">
                 <thead>
                     <tr>
-                        <th>Time</th>
-                        <th>Temperature (°C)</th>
-                        <th>Conditions</th>
-                        <th>Humidity (%)</th>
-                        <th>Wind Speed (m/s)</th>
+                        <th colspan="5" style="background-color: #f4f4f4; padding: 10px; text-align: center;">
+                            📅 Weather Forecast for {date}
+                        </th>
+                    </tr>
+                    <tr style="background-color: #e0e0e0;">
+                        <th style="padding: 8px; border: 1px solid #ddd;">Time</th>
+                        <th style="padding: 8px; border: 1px solid #ddd;">Temp (°C)</th>
+                        <th style="padding: 8px; border: 1px solid #ddd;">Conditions</th>
+                        <th style="padding: 8px; border: 1px solid #ddd;">Humidity (%)</th>
+                        <th style="padding: 8px; border: 1px solid #ddd;">Wind Speed (m/s)</th>
                     </tr>
                 </thead>
                 <tbody>
         """
+        evening_icon = "🌍"
         for entry in entries:
             icon = get_weather_icon(entry["description"])
+            if entry["time"] == "18:00":
+                evening_icon = icon
             email_content += f"""
-                <tr>
-                    <td>{entry['time']}</td>
-                    <td>{entry['temperature']}°C</td>
-                    <td>{icon} {entry['description']}</td>
-                    <td>{entry['humidity']}</td>
-                    <td>{entry['wind_speed']}</td>
-                </tr>
+                    <tr>
+                        <td style="padding: 8px; border: 1px solid #ddd;">{entry['time']}</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">{entry['temperature']}°C</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">{icon} {entry['description']}</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">{entry['humidity']}</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">{entry['wind_speed']}</td>
+                    </tr>
             """
         weather_condition = entries[-1]["description"] if entries else "clear sky"
         gpt_recommendation = gpt_recommender.get_recommendation(weather_condition, date)
         email_content += f"""
                 </tbody>
             </table>
-            <p><b>✨ GPT Recommendation:</b> {gpt_recommendation}</p>
+            <p style="font-family: Arial, sans-serif; font-size: 14px;">
+                <b>✨ GPT Recommendation ({evening_icon} on {date}):</b> {gpt_recommendation}
+            </p>
         """
 
-    email_content += "<p><b>Stay safe and enjoy your day! Don’t hesitate to reach out if you have any questions. 🌍</b></p></body></html>"
+    email_content += """
+            <p style="font-family: Arial, sans-serif; font-size: 14px; margin-top: 20px;">
+                <b>Stay safe and have a great day! 🌍</b>
+            </p>
+        </body>
+    </html>
+    """
     return email_content
