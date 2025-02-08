@@ -45,7 +45,7 @@ WeatherApp/
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/your-repo/weatherapp.git
+git clone https://github.com/SalvadorBenz23/weatherapp.git
 cd weatherapp
 ```
 
@@ -64,6 +64,7 @@ export RECEIVER_EMAIL="recipient_email@example.com"
 export AWS_SES_USER="your_ses_user"
 export AWS_SES_PASS="your_ses_password"
 export SMTP_SERVER="email-smtp.eu-west-3.amazonaws.com"
+export SMTP_PORT=587
 ```
 
 ### 4️⃣ Set Up Cron Jobs
