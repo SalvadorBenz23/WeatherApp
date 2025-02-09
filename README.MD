@@ -29,7 +29,7 @@ WeatherApp/
 ├── gpt_recommendation.py    # GPTRecommendation class (AI-powered suggestions)
 ├── email_notifier.py        # EmailNotifier class (handles email sending)
 ├── helpers.py               # Utility functions (e.g., weather icons)
-├── config.py                # Configuration file (stores API keys & settings)
+├── config.py                # Configuration file (retrives API keys & settings from env var)
 ├── disable_cron.sh          # Script to remove the cron job after 14 days
 ├── cron.txt                 # Documentation for cron job setup
 ├── logs/                    # Stores logs for debugging & monitoring
@@ -87,7 +87,7 @@ echo "/path/to/WeatherApp/disable_cron.sh" | at 08:01 AM `date -d "14 days" '+%Y
 ---
 
 ## 📌 Usage
-1. Ensure all dependencies are installed and `config.py` is properly set.
+1. Ensure all dependencies are installed and all the env vars are properly set for `config.py`.
 2. Run the application manually to test:
    ```bash
    python3 main.py
