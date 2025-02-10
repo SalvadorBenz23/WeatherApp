@@ -28,7 +28,7 @@ WeatherApp/
 ├── weather_forecast.py      # WeatherForecast class (fetches weather data)
 ├── gpt_recommendation.py    # GPTRecommendation class (AI-powered suggestions)
 ├── email_notifier.py        # EmailNotifier class (handles email sending)
-├── utils.py               # Utility functions (e.g., weather icons)
+├── utils.py                 # Utility functions (e.g., weather icons)
 ├── config.py                # Configuration file (retrives API keys & settings from env var)
 ├── disable_cron.sh          # Script to remove the cron job after 14 days
 ├── cron.txt                 # Documentation for cron job setup
